@@ -1,0 +1,129 @@
+country_decisions = {
+	form_republic_of_pontus = {
+		major = yes
+		potential = {
+			normal_or_historical_nations = yes
+			was_never_end_game_tag_trigger = yes
+			NOT = { has_reform = celestial_empire } 
+			tag = TRE
+			NOT = { tag = PON }
+			OR = {
+				NOT = { exists = PON }
+				ai = no
+			}
+			OR = {
+				ai = no
+				is_religion_enabled = orthodox
+			}
+		}
+		provinces_to_highlight = {
+			OR = {
+				province_id = 330		# Trebizond
+				AND = {
+					province_id = 328	# Sinop
+					ROOT = { NOT = { owns_core_province = 328 } }
+				}
+				AND = {
+					province_id = 1846 	# Amasya
+					ROOT = { NOT = { owns_core_province = 1846 } }
+				}
+				AND = {
+					province_id = 2304 	# Canik
+					ROOT = { NOT = { owns_core_province = 2304 } }
+				}
+			}
+			OR = {
+				NOT = { owned_by = ROOT }
+				NOT = { is_core = ROOT }
+			}
+		}
+		allow = {
+			NOT = { exists = PON }
+			adm_tech = 10
+			OR = {
+				religion = orthodox
+			}
+			owns_core_province = 330			# Trebizond
+			OR = {
+				owns_core_province = 328		# Sinop
+				owns_core_province = 1846		# Matrega
+				owns_core_province = 2304		# Canik
+			}
+			is_at_war = no
+		}
+		effect = {
+			change_tag = PON
+			swap_non_generic_missions = yes
+			remove_non_electors_emperors_from_empire_effect = yes
+			if = {
+				limit = {
+					NOT = { government_rank = 2 }
+				}
+				set_government_rank = 2
+			}
+			random_owned_province = {
+				limit = {
+					OR = {
+						culture = pontic_greek
+					}
+				}
+				add_base_tax = 1
+			}
+			add_country_modifier = {
+				name = "centralization_modifier"
+				duration = 3650
+			}
+			change_government = republic
+			add_government_reform = noble_elite_reform
+			if = {
+				limit = {
+					has_custom_ideas = no
+					NOT = { has_idea_group = PON_ideas }
+				}
+				country_event = { id = ideagroups.1 } #Swap Ideas
+			}
+			add_prestige = 5
+			change_primary_culture = pontic_greek
+			PON = {
+				random_owned_province = {
+					limit = { 
+						is_capital = no 
+						OR = {
+							culture = crimean
+							culture = armenian
+							culture = georgian
+							culture = turkish
+							culture = greek
+							culture = gothic
+						}
+					} 
+					change_culture = pontic_greek
+				}
+			}
+			erzurum_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PON
+			}
+			kastamonu_area = { # karadeniz
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PON
+			}
+			crimea_area = {
+				limit = {
+					NOT = { owned_by = ROOT }
+				}
+				add_permanent_claim = PON
+			}
+			capital_scope = {
+				change_culture = pontic_greek
+			}
+		}
+		ai_will_do = {
+			factor = 1
+		}
+	}
+}

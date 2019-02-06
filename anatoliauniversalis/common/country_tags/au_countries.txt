@@ -1,0 +1,3 @@
+#AnatoliaUniversalis Added
+HZG = "countries/Herzegovina.txt"
+PON = "countries/Pontus.txt"
