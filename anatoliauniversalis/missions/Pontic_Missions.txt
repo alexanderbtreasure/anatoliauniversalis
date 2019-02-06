@@ -1,0 +1,345 @@
+tre_conquest_missions = {
+
+	slot = 1
+	generic = no
+	ai = yes
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = TRE
+			tag = PON
+		}
+	}
+	has_country_shield = yes
+	
+	tre_retaking_sinope = {
+		icon = mission_bedouins
+		required_missions = { }
+		
+		trigger = {
+			OR = {
+				marriage_with = AKK
+				marriage_with = GEO
+			}
+		}
+		
+		effect = {
+			#todo cash event from geo/akk
+			325 = { #Kastamonu
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			328 = { #Sinop
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tre_restore_byzantium_crown = {
+		icon = mission_bedouins
+		required_missions = { tre_retaking_sinope }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 325 #Kastamonu
+				province_id = 328 #Sinop
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			AND = {
+				owns_or_non_sovereign_subject_of = 325 #Kastamonu
+				owns_or_non_sovereign_subject_of = 328 #Sinop
+			}
+		}
+		
+		effect = {
+			151 = { #Constantinople
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			if = {
+				limit = {
+					exists = BYZ
+				}
+				add_casus_belli = {
+					target = BYZ
+					type = cb_restoration_of_union
+					months = 300
+				}
+			}
+		}
+	}
+	
+	tre_city_of_the_worlds_desire = {
+		icon = mission_bedouins
+		required_missions = { tre_restore_byzantium_crown }
+		
+		provinces_to_highlight = {
+			province_id = 151 #Constantinople
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 151
+		}
+		
+		effect = {
+			# trebizond move capital or move development event
+			add_prestige = 20
+			add_legitimacy = 10
+			kastamonu_area = { #Karadeniz
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2410 = { #Theodoro
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			285 = { #Caffa
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2447 = { #Matrega
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tre_retaking_trebizond_heartland = {
+		icon = mission_bedouins
+		required_missions = { tre_city_of_the_worlds_desire }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2299 #Bolu
+				province_id = 2304 #Canik
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 2299 #Bolu
+			owns_or_non_sovereign_subject_of = 2304 #Canik
+		}
+		
+		effect = {
+			add_prestige = 10
+			1846 = { #Amasya
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			331 = { #Erzurum
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tre_pontic_anatolia = {
+		icon = mission_bedouins
+		required_missions = { tre_retaking_trebizond_heartland }
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 328 #Sinop
+			owns_or_non_sovereign_subject_of = 331 #Erzurum
+		}
+		
+		effect = {
+			328 = { #Sinop
+				change_culture = pontic_greek
+				change_religion = orthodox
+			}
+			331 = { #Erzurum
+				change_culture = pontic_greek
+				change_religion = orthodox
+			}
+		}
+	}
+	
+	tre_gen_buildforces = {
+		icon = mission_central_asian_city
+		position = 5
+		
+		trigger = {
+			army_size_percentage = 1
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_country_modifier = {
+				#land_morale = 0.1
+				name = to_do
+				duration = 3650
+			}
+		}
+	}
+}
+
+tre_additional_conquest_missions = {
+	slot = 2
+	generic = no
+	ai = yes
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = TRE
+			tag = PON
+		}
+	}
+	has_country_shield = yes
+	
+	tre_retaking_perateia = {
+		icon = mission_bedouins
+		#position =
+		required_missions = { tre_city_of_the_worlds_desire }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2410 #Theodoro
+				province_id = 285 #Caffa
+				province_id = 2447 #Matrega
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 2410 #Theodoro
+			owns_or_non_sovereign_subject_of = 285 #Caffa
+			owns_or_non_sovereign_subject_of = 2447 #Matrega
+		}
+		
+		effect = {
+			add_prestige = 10
+		}
+	}
+}
+
+tre_state_missions = {
+	slot = 3
+	generic = no
+	ai = yes
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = TRE
+			tag = PON
+		}
+	}
+	has_country_shield = yes
+	
+	tre_develop_trebizond = {
+		icon = mission_central_asian_city
+		#position = 5
+		
+		trigger = {
+			330 = {
+				development = 15
+			}
+		}
+		
+		effect = {
+			add_mil_power = 50
+		}
+	}
+}
+
+tre_economic_missions = {
+	slot = 4
+	generic = no
+	ai = yes
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = TRE
+			tag = PON
+		}
+	}
+	has_country_shield = yes
+	
+	tre_develop_trebizond_more = {
+		icon = mission_central_asian_city
+		#position = 5
+		
+		trigger = {
+			330 = {
+				development = 15
+			}
+		}
+		
+		effect = {
+			add_adm_power = 50
+		}
+	}
+}
+
+tre_military_missions = {
+	slot = 5
+	generic = no
+	ai = yes
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		OR = {
+			tag = TRE
+			tag = PON
+		}
+	}
+	has_country_shield = yes
+	
+	tre_buildforces = {
+		icon = mission_central_asian_city
+		#position = 5
+		
+		trigger = {
+			army_size_percentage = 1
+		}
+		
+		effect = {
+			add_mil_power = 50
+			add_country_modifier = {
+				name = "oma_buildforces_mod"
+				duration = 5475
+			}
+			#add_country_modifier = {
+				#land_morale = 0.1
+			#	name = to_do
+			#	duration = 3650
+			#}
+		}
+	}
+}

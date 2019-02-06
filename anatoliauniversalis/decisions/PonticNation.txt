@@ -46,7 +46,7 @@ country_decisions = {
 			owns_core_province = 330			# Trebizond
 			OR = {
 				owns_core_province = 328		# Sinop
-				owns_core_province = 1846		# Matrega
+				owns_core_province = 1846		# Amasya
 				owns_core_province = 2304		# Canik
 			}
 			is_at_war = no
