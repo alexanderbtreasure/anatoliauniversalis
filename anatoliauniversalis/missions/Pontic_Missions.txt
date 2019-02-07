@@ -14,7 +14,7 @@ tre_conquest_missions = {
 	has_country_shield = yes
 	
 	tre_retaking_sinope = {
-		icon = mission_bedouins
+		icon = mission_alliances
 		required_missions = { }
 		
 		trigger = {
@@ -43,8 +43,8 @@ tre_conquest_missions = {
 		}
 	}
 	
-	tre_restore_byzantium_crown = {
-		icon = mission_bedouins
+	tre_komnenoi_byzantium = {
+		icon = mission_monarch_in_throne_room
 		required_missions = { tre_retaking_sinope }
 		
 		provinces_to_highlight = {
@@ -76,7 +76,7 @@ tre_conquest_missions = {
 				}
 				add_casus_belli = {
 					target = BYZ
-					type = cb_restoration_of_union
+					type = cb_restore_personal_union
 					months = 300
 				}
 			}
@@ -84,8 +84,8 @@ tre_conquest_missions = {
 	}
 	
 	tre_city_of_the_worlds_desire = {
-		icon = mission_bedouins
-		required_missions = { tre_restore_byzantium_crown }
+		icon = mission_empire
+		required_missions = { tre_komnenoi_byzantium }
 		
 		provinces_to_highlight = {
 			province_id = 151 #Constantinople
@@ -131,8 +131,8 @@ tre_conquest_missions = {
 		}
 	}
 	
-	tre_retaking_trebizond_heartland = {
-		icon = mission_bedouins
+	tre_retaking_pontic_heartland = {
+		icon = mission_crusade_for_varna
 		required_missions = { tre_city_of_the_worlds_desire }
 		
 		provinces_to_highlight = {
@@ -168,8 +168,8 @@ tre_conquest_missions = {
 	}
 	
 	tre_pontic_anatolia = {
-		icon = mission_bedouins
-		required_missions = { tre_retaking_trebizond_heartland }
+		icon = mission_persian_soldiers
+		required_missions = { tre_retaking_pontic_heartland }
 		
 		trigger = {
 			owns_or_non_sovereign_subject_of = 328 #Sinop
@@ -184,24 +184,6 @@ tre_conquest_missions = {
 			331 = { #Erzurum
 				change_culture = pontic_greek
 				change_religion = orthodox
-			}
-		}
-	}
-	
-	tre_gen_buildforces = {
-		icon = mission_central_asian_city
-		position = 5
-		
-		trigger = {
-			army_size_percentage = 1
-		}
-		
-		effect = {
-			add_mil_power = 50
-			add_country_modifier = {
-				#land_morale = 0.1
-				name = to_do
-				duration = 3650
 			}
 		}
 	}
@@ -221,9 +203,9 @@ tre_additional_conquest_missions = {
 	}
 	has_country_shield = yes
 	
-	tre_retaking_perateia = {
-		icon = mission_bedouins
-		#position =
+	tre_recovering_perateia = {
+		icon = mission_invade_island
+		position = 4
 		required_missions = { tre_city_of_the_worlds_desire }
 		
 		provinces_to_highlight = {
@@ -262,7 +244,7 @@ tre_state_missions = {
 	has_country_shield = yes
 	
 	tre_develop_trebizond = {
-		icon = mission_central_asian_city
+		icon = mission_eastern_european_city
 		#position = 5
 		
 		trigger = {
@@ -277,35 +259,35 @@ tre_state_missions = {
 	}
 }
 
-tre_economic_missions = {
-	slot = 4
-	generic = no
-	ai = yes
+#tre_economic_missions = {
+#	slot = 4
+#	generic = no
+#	ai = yes
 	
-	potential = {
-		NOT = { map_setup = map_setup_random }
-		OR = {
-			tag = TRE
-			tag = PON
-		}
-	}
-	has_country_shield = yes
+#	potential = {
+#		NOT = { map_setup = map_setup_random }
+#		OR = {
+#			tag = TRE
+#			tag = PON
+#		}
+#	}
+#	has_country_shield = yes
 	
-	tre_develop_trebizond_more = {
-		icon = mission_central_asian_city
-		#position = 5
+#	tre_develop_trebizond_more = {
+#		icon = mission_central_asian_city
+#		#position = 5
 		
-		trigger = {
-			330 = {
-				development = 15
-			}
-		}
+#		trigger = {
+#			330 = {
+#				development = 15
+#			}
+#		}
 		
-		effect = {
-			add_adm_power = 50
-		}
-	}
-}
+#		effect = {
+#			add_adm_power = 50
+#		}
+#	}
+#}
 
 tre_military_missions = {
 	slot = 5
@@ -321,8 +303,8 @@ tre_military_missions = {
 	}
 	has_country_shield = yes
 	
-	tre_buildforces = {
-		icon = mission_central_asian_city
+	tre_build_forces = {
+		icon = mission_build_up_to_force_limit
 		#position = 5
 		
 		trigger = {

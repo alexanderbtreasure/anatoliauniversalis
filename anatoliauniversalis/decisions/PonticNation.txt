@@ -44,7 +44,7 @@ country_decisions = {
 				religion = orthodox
 			}
 			owns_core_province = 330			# Trebizond
-			OR = {
+			AND = {
 				owns_core_province = 328		# Sinop
 				owns_core_province = 1846		# Amasya
 				owns_core_province = 2304		# Canik

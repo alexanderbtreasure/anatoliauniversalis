@@ -17,25 +17,25 @@ HZG_ideas = {
 	}
 	free = yes		#will be added at load.
 	
-	pon_legacy_of_the_euxine = {
-			galley_power = 0.15
+	hzg_legacy_of_the_euxine = {
+		galley_power = 0.15
 	}
-	pon_pontic_settlements = {
-			global_colonial_growth = 15
+	hzg_pontic_settlements = {
+		global_colonial_growth = 15
 	}
-	pon_memories_of_chaldia = {
+	hzg_memories_of_chaldia = {
 		global_tax_modifier = 0.15
 	}
-	pon_pontic_princesses = {
+	hzg_pontic_princesses = {
 		diplomatic_reputation = 2
 	}
-	pon_pontic_resiliency = {
+	hzg_pontic_resiliency = {
 		defensiveness = 0.2
 	}
-	pon_anatolian_hellenization = {
+	hzg_anatolian_hellenization = {
 		core_creation = -0.10
 	}
-	pon_learning_to_fight_the_turks = {
+	hzg_learning_to_fight_the_turks = {
 		land_morale = 0.05
 	}
 }
@@ -47,8 +47,7 @@ PON_ideas = {
 	}
 
 	bonus = {
-		global_own_trade_power = 0.2
-		global_trade_goods_size_modifier = 0.10
+		global_trade_goods_size_modifier = 0.15
 	}
 	
 	trigger = {
@@ -57,29 +56,27 @@ PON_ideas = {
 	free = yes		#will be added at load.
 	
 	pon_legacy_of_the_euxine = {
-			galley_power = 0.15
-			galley_cost = -0.10
-	}
-	pon_pontic_settlements = {
-			global_colonial_growth = 15
+		galley_power = 0.15
+		galley_cost = -0.10
 	}
 	pon_memories_of_chaldia = {
 		global_tax_modifier = 0.15
 	}
-	pon_pontic_princesses = {
+	pon_komnenoi_princesses = {
 		diplomatic_reputation = 2
 		diplomats = 1
 	}
+	pon_pontic_settlements = {
+		global_colonial_growth = 15
+	}
 	pon_pontic_resiliency = {
-		defensiveness = 0.2
-		hostile_attrition = 1
+		defensiveness = 0.25
 	}
 	pon_anatolian_hellenization = {
-		core_creation = -0.10
-		culture_conversion_cost = -0.1
+		core_creation = -0.15
+		culture_conversion_cost = -0.15
 	}
-	pon_learning_to_fight_the_turks = {
-		land_morale = 0.05
-		discipline = 0.025
+	pon_unified_pontic_republic = {
+		republican_tradition = 1.5
 	}
 }
