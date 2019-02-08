@@ -1,8 +1,15 @@
 # Balkan Alliances
 
 vassal = {
-	first = BOS
+	first = ARA
 	second = HZG
-	start_date = 1444.1.1
+	start_date = 1444.2.15
+	end_date = 1466.1.1
+}
+
+vassal = {
+	first = TUR
+	second = HZG
+	start_date = 1466.1.1
 	end_date = 1483.1.1
 }
