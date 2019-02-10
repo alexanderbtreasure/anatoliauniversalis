@@ -1,0 +1,77 @@
+###########################################
+# Flavor Events for Turkish Missions
+#
+# Scripted by Alex Treasure
+###########################################
+
+namespace = au_flavor_tur
+normal_or_historical_nations = yes
+
+#Edirne Captured
+country_event = {
+	id = au_flavor_tur.1
+	
+	title = "tur_edirne_captured_title"
+	desc = "tur_edirne_captured_desc"
+	picture = BATTLE_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = TUR
+		TUR = {
+			capital = 149 #Edirne
+			NOT = { controls = 149 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	
+	option = {
+		name = "tur_edirne_captured.a"
+		add_prestige = -5
+		add_legitimacy = -5
+		TUR = {
+			add_country_modifier {
+				name = tur_edirne_captured
+				duration = 3650
+			}
+		}
+	}
+}
+
+#Edirne Lost
+country_event = {
+	id = au_flavor_tur.2
+	
+	title = "tur_edirne_lost_title"
+	desc = "tur_edirne_lost_desc"
+	picture = COUNTRY_COLLAPSE_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = TUR
+		TUR = {
+			NOT = { owns = 149 }
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 0
+	}
+	
+	option = {
+		name = "tur_edirne_lost.a"
+		add_prestige = -10
+		add_legitimacy = -10
+		TUR = {
+			add_country_modifier {
+				name = tur_edirne_lost
+				duration = 7300
+			}
+		}
+	}
+}

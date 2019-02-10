@@ -45,6 +45,7 @@ tre_conquest_missions = {
 	
 	tre_komnenoi_byzantium = {
 		icon = mission_monarch_in_throne_room
+		position = 3
 		required_missions = { tre_retaking_sinope }
 		
 		provinces_to_highlight = {
@@ -85,6 +86,7 @@ tre_conquest_missions = {
 	
 	tre_city_of_the_worlds_desire = {
 		icon = mission_empire
+		position = 5
 		required_missions = { tre_komnenoi_byzantium }
 		
 		provinces_to_highlight = {
@@ -128,63 +130,120 @@ tre_conquest_missions = {
 				}
 				add_permanent_claim = ROOT
 			}
+			149 = { #Edirne/Adrianople
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			hudavendigar_area = { #Hudavendigar
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			morea_area = { #Athens/Achaea/Morea/Crete
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			aegean_archipelago_area = { #Euboea/Chios/Naxos/Rhodes
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 	
-	tre_retaking_pontic_heartland = {
-		icon = mission_crusade_for_varna
+	tre_controlling_the_bosphorus = {
+		icon = mission_sea_battles
 		required_missions = { tre_city_of_the_worlds_desire }
 		
 		provinces_to_highlight = {
 			OR = {
-				province_id = 2299 #Bolu
-				province_id = 2304 #Canik
+				province_id = 149 #Edrine/Adrianople
+				province_id = 316 #Kocaeli/Optimatoi
+				province_id = 317 #Hudavendigar
+				province_id = 2296 #Biga
 			}
 			NOT = { owned_by = ROOT }
 		}
 		
 		trigger = {
-			owns_or_non_sovereign_subject_of = 2299 #Bolu
-			owns_or_non_sovereign_subject_of = 2304 #Canik
+			owns_or_non_sovereign_subject_of = 149 #Edrine/Adrianople
+			owns_or_non_sovereign_subject_of = 316 #Kocaeli/Optimatoi
+			owns_or_non_sovereign_subject_of = 317 #Hudavendigar
+			owns_or_non_sovereign_subject_of = 2296 #Biga
 		}
 		
 		effect = {
 			add_prestige = 10
-			1846 = { #Amasya
+			aydin_area = {
 				limit = {
-					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
-			331 = { #Erzurum
+			cukurova_area = {
 				limit = {
-					NOT = { is_core = ROOT }
+					NOT = { owned_by = ROOT }
 					NOT = { is_permanent_claim = ROOT }
 				}
 				add_permanent_claim = ROOT
 			}
 		}
 	}
+}
+
+pon_conquest_missions = {
+
+	slot = 1
+	generic = no
+	ai = yes
 	
-	tre_pontic_anatolia = {
-		icon = mission_persian_soldiers
-		required_missions = { tre_retaking_pontic_heartland }
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = PON
+	}
+	has_country_shield = yes
+	
+	pon_subdue_the_anatolian_coast = {
+		icon = mission_sea_battles
+		required_missions = { tre_controlling_the_bosphorus }
+		position = 8
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2297 #Saruhan
+				province_id = 318 #Sugla
+				province_id = 4309 #Aydin
+				province_id = 319 #Mentesha
+				province_id = 2298 #Teke
+				province_id = 2302 #Icel
+				province_id = 327 #Adana
+				province_id = 321 #Cyprus
+			}
+			NOT = { owned_by = ROOT }
+		}
 		
 		trigger = {
-			owns_or_non_sovereign_subject_of = 328 #Sinop
-			owns_or_non_sovereign_subject_of = 331 #Erzurum
+			aydin_area = {
+				owns_or_non_sovereign_subject_of = ROOT
+			}
+			cukurova_area = {
+				owns_or_non_sovereign_subject_of = ROOT
+			}
 		}
 		
 		effect = {
-			328 = { #Sinop
-				change_culture = pontic_greek
-				change_religion = orthodox
-			}
-			331 = { #Erzurum
-				change_culture = pontic_greek
-				change_religion = orthodox
-			}
+			add_prestige = 10
 		}
 	}
 }
@@ -205,7 +264,7 @@ tre_additional_conquest_missions = {
 	
 	tre_recovering_perateia = {
 		icon = mission_invade_island
-		position = 4
+		position = 6
 		required_missions = { tre_city_of_the_worlds_desire }
 		
 		provinces_to_highlight = {
@@ -243,51 +302,143 @@ tre_state_missions = {
 	}
 	has_country_shield = yes
 	
-	tre_develop_trebizond = {
-		icon = mission_eastern_european_city
-		#position = 5
+	tre_retaking_pontic_heartland = {
+		icon = mission_crusade_for_varna
+		position = 6
+		required_missions = { tre_city_of_the_worlds_desire }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2299 #Bolu
+				province_id = 2304 #Canik
+			}
+			NOT = { owned_by = ROOT }
+		}
 		
 		trigger = {
-			330 = {
-				development = 15
-			}
+			owns_or_non_sovereign_subject_of = 2299 #Bolu
+			owns_or_non_sovereign_subject_of = 2304 #Canik
 		}
 		
 		effect = {
-			add_mil_power = 50
+			add_prestige = 10
+			1846 = { #Amasya
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			331 = { #Erzurum
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tre_pontic_conversion = {
+		icon = mission_persian_soldiers
+		#position = 7
+		required_missions = { tre_retaking_pontic_heartland }
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 328 #Sinop
+			owns_or_non_sovereign_subject_of = 331 #Erzurum
+		}
+		
+		effect = {
+			328 = { #Sinop
+				change_culture = pontic_greek
+				change_religion = orthodox
+			}
+			331 = { #Erzurum
+				change_culture = pontic_greek
+				change_religion = orthodox
+			}
 		}
 	}
 }
 
-#tre_economic_missions = {
-#	slot = 4
-#	generic = no
-#	ai = yes
+pon_state_missions = {
+	slot = 3
+	generic = no
+	ai = yes
 	
-#	potential = {
-#		NOT = { map_setup = map_setup_random }
-#		OR = {
-#			tag = TRE
-#			tag = PON
-#		}
-#	}
-#	has_country_shield = yes
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = PON
+	}
+	has_country_shield = yes
 	
-#	tre_develop_trebizond_more = {
-#		icon = mission_central_asian_city
-#		#position = 5
+	pon_pontic_anatolia = {
+		icon = mission_persian_soldiers
+		position = 8
+		required_missions = { pon_subdue_the_anatolian_coast, tre_pontic_conversion }
 		
-#		trigger = {
-#			330 = {
-#				development = 15
-#			}
-#		}
+		trigger = {
+			owns_or_non_sovereign_subject_of = 328 #Sinop
+		}
 		
-#		effect = {
-#			add_adm_power = 50
-#		}
-#	}
-#}
+		effect = {
+			328 = { #Sinop
+				change_culture = pontic_greek
+				change_religion = orthodox
+			}
+			331 = { #Erzurum
+				change_culture = pontic_greek
+				change_religion = orthodox
+			}
+		}
+	}
+}
+
+pon_economic_missions = {
+	slot = 4
+	generic = no
+	ai = yes
+	
+	potential = {
+		NOT = { map_setup = map_setup_random }
+		tag = PON
+	}
+	has_country_shield = yes
+	
+	pon_control_the_aegean = {
+		icon = mission_sea_battles
+		required_missions = { tre_city_of_the_worlds_desire }
+		position = 6
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 146 #Athens
+				province_id = 1773 #Achaea
+				province_id = 145 #Morea
+				province_id = 163 #Crete
+				province_id = 3003 #Negroponte/Euboea
+				province_id = 2348 #Scio/Chios
+				province_id = 164 #Naxos
+				province_id = 320 #Rhodes
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			morea_area = {
+				owns_or_non_sovereign_subject_of = ROOT
+			}
+			aegean_archipelago_area = {
+				owns_or_non_sovereign_subject_of = ROOT
+			}
+		}
+		
+		effect = {
+			add_prestige = 10
+		}
+	}
+}
 
 tre_military_missions = {
 	slot = 5
@@ -305,7 +456,7 @@ tre_military_missions = {
 	
 	tre_build_forces = {
 		icon = mission_build_up_to_force_limit
-		#position = 5
+		#position = 1
 		
 		trigger = {
 			army_size_percentage = 1
@@ -317,11 +468,171 @@ tre_military_missions = {
 				name = "oma_buildforces_mod"
 				duration = 5475
 			}
-			#add_country_modifier = {
-				#land_morale = 0.1
-			#	name = to_do
-			#	duration = 3650
-			#}
+		}
+	}
+	
+	tre_develop_trebizond = {
+		icon = mission_eastern_european_city
+		position = 3
+		required_missions = { tre_build_forces }
+		
+		trigger = {
+			330 = {
+				development = 15
+			}
+		}
+		
+		effect = {
+			2196 = { #Guria
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			462 = { #Odishi
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1856 = { #Abkhazia
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2195 = { #Adyghe
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tre_attack_neighbors = {
+		icon = mission_eastern_european_city
+		position = 5
+		required_missions = { tre_develop_trebizond }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 2196 #Guria
+				province_id = 462 #Odishi
+				province_id = 1856 #Abkhazia
+				province_id = 2195 #Adyghe
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 2196 #Guria
+			owns_or_non_sovereign_subject_of = 462 #Odishi
+			owns_or_non_sovereign_subject_of = 1856 #Abkhazia
+			owns_or_non_sovereign_subject_of = 2195 #Adyghe
+		}
+		
+		effect = {
+			287 = { #Kuban
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			286 = { #Azov
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			2412 = { #Kyzyl-Yar
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1974 = { #Yedishkul
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			crimea_area = { #Crimea
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+		}
+	}
+	
+	tre_dominate_azov = {
+		icon = mission_eastern_european_city
+		required_missions = { tre_attack_neighbors }
+		
+		provinces_to_highlight = {
+			OR = {
+				province_id = 287 #Kuban
+				province_id = 286 #Azov
+				province_id = 2412 #Kyzyl-Yar
+				province_id = 1974 #Yedishkul
+				province_id = 284 #Crimea
+				province_id = 2410 #Theodoro
+				province_id = 285 #Caffa
+				province_id = 2447 #Matrega
+			}
+			NOT = { owned_by = ROOT }
+		}
+		
+		trigger = {
+			owns_or_non_sovereign_subject_of = 287 #Kuban
+			owns_or_non_sovereign_subject_of = 286 #Azov
+			owns_or_non_sovereign_subject_of = 2412 #Kyzyl-Yar
+			owns_or_non_sovereign_subject_of = 1974 #Yedishkul
+			owns_or_non_sovereign_subject_of = 284 #Crimea
+			owns_or_non_sovereign_subject_of = 2410 #Theodoro
+			owns_or_non_sovereign_subject_of = 285 #Caffa
+			owns_or_non_sovereign_subject_of = 2447 #Matrega
+		}
+		
+		effect = {
+			yedisan_area = { #Yedishkul/Ingilas/Edisanas
+				limit = {
+					NOT = { owned_by = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1756 = { #Bessarabia
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			159 = { #Silistre
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
+			1764 = { #Kirkkilise/Burgas
+				limit = {
+					NOT = { is_core = ROOT }
+					NOT = { is_permanent_claim = ROOT }
+				}
+				add_permanent_claim = ROOT
+			}
 		}
 	}
 }

@@ -1,0 +1,166 @@
+###########################################
+# Flavor Events for Pontic Missions
+#
+# Scripted by Alex Treasure
+###########################################
+
+namespace = au_flavor_tre
+normal_or_historical_nations = yes
+
+#Marriage to Aq Qoyunlu
+country_event = {
+	id = au_flavor_tre.1
+	
+	title = "tre_marriage_to_aq_qoyunlu_title"
+	desc = "tre_marriage_to_aq_qoyunlu_desc"
+	picture = COURT_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = TRE
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = { #Go through with the marriage
+		name = "tre_marriage_to_aq_qoyunlu.a"
+		ai_chance = { factor = 95 }
+		add_dip_power = 25
+		AKK = {
+			create_marriage = TRE
+			create_alliance = TRE
+			add_opinion = {
+				who = TRE
+				modifier = tre_marriage_with_guarantee
+			}
+		}
+	}
+	option = { #Form another plan
+		name = "tre_marriage_to_aq_qoyunlu.b"
+		ai_chance = { factor = 5 }
+		add_prestige = 10
+	}
+}
+
+#Old Partnerships
+country_event = {
+	id = au_flavor_tre.2
+	
+	title = "tre_marriage_to_georgia_title"
+	desc = "tre_marriage_to_georgia_desc"
+	picture = COURT_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = TRE
+	}
+	
+	mean_time_to_happen = {
+		months = 12
+	}
+	
+	option = { #Go through with the marriage
+		name = "tre_marriage_to_georgia.a"
+		ai_chance = { factor = 95 }
+		add_dip_power = 25
+		GEO = {
+			create_marriage = TRE
+			create_alliance = TRE
+			add_opinion = {
+				who = TRE
+				modifier = tre_marriage_with_guarantee
+			}
+		}
+	}
+	option = { #Form another plan
+		name = "tre_marriage_to_georgia.b"
+		ai_chance = { factor = 5 }
+		add_prestige = 10
+	}
+}
+
+#Renewing Old Guarantees
+country_event = {
+	id = au_flavor_tre.3
+	
+	title = "tre_marriage_to_qara_qoyunlu_title"
+	desc = "tre_marriage_to_qara_qoyunlu_desc"
+	picture = COURT_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = TRE
+	}
+	
+	mean_time_to_happen = {
+		months = 120
+	}
+	
+	option = { #Go through with the marriage
+		name = "tre_marriage_to_qara_qoyunlu.a"
+		ai_chance = { factor = 95 }
+		add_dip_power = 25
+		QAR = {
+			create_marriage = TRE
+			create_alliance = TRE
+			add_opinion = {
+				who = TRE
+				modifier = tre_marriage_with_guarantee
+			}
+		}
+	}
+	option = { #Form another plan
+		name = "tre_marriage_to_qara_qoyunlu.b"
+		ai_chance = { factor = 5 }
+		add_prestige = 10
+	}
+}
+
+#Establishing New Guarantees
+country_event = {
+	id = au_flavor_tre.4
+	
+	title = "tre_new_guarantees_title"
+	desc = "tre_new_guarantees_desc"
+	picture = COURT_eventPicture
+	
+	fire_only_once = yes
+	
+	trigger = {
+		tag = TRE
+	}
+	
+	mean_time_to_happen = {
+		months = 72
+	}
+	
+	option = { #Negotiate the guarantees
+		name = "tre_new_guarantees.a"
+		ai_chance = { factor = 95 }
+		add_dip_power = 25
+		KAR = { #Karaman
+			create_guarantee = TRE
+			add_opinion = {
+				who = TRE
+				modifier = tre_organized_guarantee
+			}
+		}
+		CND = { #Candar
+			create_guarantee = TRE
+			add_opinion = {
+				who = TRE
+				modifier = tre_organized_guarantee
+			}
+		}
+	}
+	option = { #Form another plan
+		name = "tre_new_guarantees.b"
+		ai_chance = { factor = 5 }
+		add_prestige = 20
+	}
+}
