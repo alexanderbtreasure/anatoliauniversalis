@@ -21,3 +21,10 @@
  tur_edirne_lost_title:0 "Edirne Lost"
  tur_edirne_lost_desc:0 "We have lost Edirne, and with it, our control of the Bosphorus. We must consolidate our lands and regroup to retake our former capital."
  tur_edirne_lost.a:0 "They will all submit to us sooner or later!"
+ hzg_swear_fealty_title:0 "Decide Herzegovina's Alleigance"
+ hzg_swear_fealty_desc:0 "With the Ottoman threat in the Balkans, it is time that we reevaluate our allegiances. Our diplomats have worked hard to offer us options, and it would be a waste to not consider them all carefully."
+ hzg_swear_fealty.a:0 "Keep our allegiance to Aragon."
+ hzg_swear_fealty.b:0 "Swear fealty to the Ottomans."
+ hzg_swear_fealty.c:0 "Let us rejoin our people in Bosnia."
+ hzg_swear_fealty.d:0 "We do not need outsiders' protection!"
+ 
